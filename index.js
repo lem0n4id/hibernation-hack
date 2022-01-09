@@ -5,6 +5,7 @@ var minute = 0;
 var seconds = 0;
 var stoptime = true;
 
+
 function timerCycle() {
     if (stoptime == false) {
         seconds = parseInt(seconds);
@@ -39,6 +40,9 @@ function timerCycle() {
     }
 }
 
+
+
+
 function startTimer() {
     if (stoptime == true) {
         stoptime = false;
@@ -71,13 +75,19 @@ function Start() {
     button.value = "Stop";
 }
 
+
 function Stop() {
     button.removeEventListener("click", Stop);
     button.addEventListener("click", Start);
     stopTimer();
+    var time = hour + ':' + minute + ':' + seconds;
+    document.querySelector('#time').textContent = time;
     resetTimer();
     button.value = "Start";
+    modal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
 }
+
 
 let today = new Date();
 let year = today.getFullYear();
@@ -87,3 +97,32 @@ let day = today.getDate();
 let date = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
 document.querySelector('#date').textContent = date;
 // console.log(date);
+
+
+
+// popup
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+
+
+
+
+const closeModal = function() {
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
+}
+
+btnCloseModal.addEventListener('click', closeModal);
+
+overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function(e) {
+    console.log(e.key);
+
+    if (e.key === 'Escape') {
+        if (!modal.classList.contains('hidden')) {
+            closeModal();
+        }
+    }
+});

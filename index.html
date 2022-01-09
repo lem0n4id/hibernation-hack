@@ -23,12 +23,20 @@
     <div id="date">
 
     </div>
-    <div class="pop-up">
-        <button class="close-button">&times;</button>
-        <p>You spent <span id="time"></span>!</p>
-    </div>
 
-    <div id="overlay"></div>
+    <!-- popup -->
+
+
+    <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <h1>Time Spent</h1>
+        <p>
+            You spent <span id="time"></span>!
+        </p>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <!-- popup-end -->
 
     <div>
         <svg width="1082" height="800" viewBox="-5 -200 2000 794" fill="none" xmlns="http://www.w3.org/2000/svg">
