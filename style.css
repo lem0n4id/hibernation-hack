@@ -4,13 +4,15 @@
     font-family: 'Cutive', serif;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     box-sizing: border-box;
 }
 
 body {
-    background-image: url('bg.png'); 
-    background-size: 100% 95%; 
+    background-image: url('bg.png');
+    background-size: 100% 95%;
     background-repeat: no-repeat;
     overflow: hidden;
 }
@@ -39,4 +41,12 @@ body {
 
 #startStopButton:hover {
     background-color: #46a049;
+}
+
+#date {
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10%;
+    right: 3%;
 }
