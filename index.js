@@ -45,6 +45,7 @@ function startTimer() {
         timerCycle();
     }
 }
+
 function stopTimer() {
     if (stoptime == false) {
         stoptime = true;
@@ -78,3 +79,11 @@ function Stop() {
     button.value = "Start";
 }
 
+let today = new Date();
+let year = today.getFullYear();
+let month = today.getMonth() + 1;
+let day = today.getDate();
+// console.log(today);
+let date = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+document.querySelector('#date').textContent = date;
+// console.log(date);
