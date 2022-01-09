@@ -1,0 +1,80 @@
+const timer = document.getElementById('stopwatch');
+
+var hour = 0;
+var minute = 0;
+var seconds = 0;
+var stoptime = true;
+
+function timerCycle() {
+    if (stoptime == false) {
+        seconds = parseInt(seconds);
+        minute = parseInt(minute);
+        hour = parseInt(hour);
+
+        seconds = seconds + 1;
+
+        if (seconds == 60) {
+            minute = minute + 1;
+            seconds = 0;
+        }
+        if (minute == 60) {
+            hour = hour + 1;
+            minute = 0;
+            seconds = 0;
+        }
+
+        if (seconds < 10 || seconds == 0) {
+            seconds = '0' + seconds;
+        }
+        if (minute < 10 || minute == 0) {
+            minute = '0' + minute;
+        }
+        if (hour < 10 || hour == 0) {
+            hour = '0' + hour;
+        }
+
+        timer.innerHTML = hour + ':' + minute + ':' + seconds;
+
+        setTimeout("timerCycle()", 1000);
+    }
+}
+
+function startTimer() {
+    if (stoptime == true) {
+        stoptime = false;
+        timerCycle();
+    }
+}
+function stopTimer() {
+    if (stoptime == false) {
+        stoptime = true;
+    }
+}
+
+function resetTimer() {
+    timer.innerHTML = "00:00:00";
+    stoptime = true;
+    hour = 0;
+    seconds = 0;
+    minute = 0;
+}
+
+var button = document.getElementById("startStopButton");
+
+button.addEventListener("click", Start);
+
+function Start() {
+    button.removeEventListener("click", Start);
+    button.addEventListener("click", Stop);
+    startTimer();
+    button.value = "Stop";
+}
+
+function Stop() {
+    button.removeEventListener("click", Stop);
+    button.addEventListener("click", Start);
+    stopTimer();
+    resetTimer();
+    button.value = "Start";
+}
+
